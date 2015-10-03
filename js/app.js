@@ -90,11 +90,11 @@ $(document).ready(function(){
   	/*--- Start a new game ---*/
   	$(".new").click(newGame);
 
-		// click input#guessButton to get feedback and change div#feedback.text()	
+		/*--- Get feedback for user guess ---*/
 		$('#guessButton').click(function(e){
 			e.preventDefault();
-			//var feedback = feedback();
-			$('#feedback').text('cold');
+			var fb = newGame.feedback(); // How do I access this function???
+			$('#feedback').text(fb);
 		});  	  	
 
 });
