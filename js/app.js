@@ -91,11 +91,11 @@ $(document).ready(function(){
   	$(".new").click(newGame);
 
 		/*--- Get feedback for user guess ---*/
-		$('#guessButton').click(function(e){
-			e.preventDefault();
-			var fb = newGame.feedback(); // How do I access this function???
-			$('#feedback').text(fb);
-		});  	  	
+  	$('#guessButton').click(function(e){
+  		e.preventDefault();
+  		var fb = newGame.feedback(); // How do I access this function???
+  		$('#feedback').text(fb);
+  	});  	  	
 
 });
 
