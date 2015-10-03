@@ -2,17 +2,15 @@
 $(document).ready(function(){
 
 	function newGame() {
-		var count = 0,
-				guess = '',
-				random = secret(),
-				list = '';
+		var count = 0;
 
+		$('#guessList').empty();
+		$('#count').text(count);
 
-		
 		console.log('Let the games begin!');
-		console.log('Secret Number is ' + random);
 
 		function secret() {
+			// generate random number between 1 and 100
 			return Math.floor(Math.random() * 100) + 1;
 		}
 
@@ -34,20 +32,48 @@ $(document).ready(function(){
 
 		function addList(guess) {
 			// append each guessed number as an <li> to ul#guessList
-		}	
+			$('#guessList').append('<li>' + guess + '</li>');
+		}
+
+		function findRange(random, guess) {
+			var	phrase = '',
+					diff = Math.abs(random - guess); // always positive value 
+			// return ice cold, cold, warm, hot, burnin hot
+			if (diff > 50) {
+				phrase = 'ice cold';
+			}
+			else if (diff > 30  && diff <= 50) {
+				phrase = 'cold';
+			}					
+			else if (diff > 20  && diff <= 30) {
+				phrase = 'warm';
+			}					
+			else if (diff > 10  && diff <= 20) {
+				phrase = 'hot';
+			}			
+			else if (diff >= 1 && diff <= 10) {
+				phrase = 'burning hot';
+			}
+			else if (diff === 0) {
+				phrase = 'Firrrrrre!';
+			}
+			return phrase;
+		}
 
 		function feedback() {
-			// call secret() to set var random
-			// change var guess to input#userGuess.val()
-			// validate(guess) 
-			// if/else ranges for guess
-			// call upCount() to set var count
-			// addList(guess)
-			// later version: call guess() to compare guess with random number
-			// return ice cold, cold, warm, hot, burnin hot
-			return 'cold';
-		}		
+			var random = secret(),
+					guess = $('#userGuess').val(), 
+					range = '';
 
+			console.log('Secret number is ' + random);
+			
+			if(validate(guess)) {
+				addList(guess);
+				upCount();
+				range = findRange(random, guess);
+			}
+			return range;
+		}		
 	}
 
 	/*--- Display information modal box ---*/
