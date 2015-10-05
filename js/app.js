@@ -25,6 +25,9 @@ $(document).ready(function(){
 	function feedback() {
 		var guess = $('#userGuess').val(), 
 				range = '';
+		//clear input
+		$('#userGuess').val('');
+
 		if(validate(guess)) {
 			addList(guess);
 			upCount();
