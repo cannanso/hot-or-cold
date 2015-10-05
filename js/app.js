@@ -1,15 +1,15 @@
 
 $(document).ready(function(){
 
+	var count = 0,
+		random = secret();
+
 	function secret() {
 		// generate random number between 1 and 100
 		var num = Math.floor(Math.random() * 100) + 1;
 		console.log('Secret number is: ' + num);
 		return num;
-	}	
-
-	var count = 0, 
-			random = secret();
+	}				
 
 	function newGame() {
 		count = 0;
