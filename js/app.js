@@ -33,6 +33,9 @@ $(document).ready(function(){
 			upCount();
 			range = findRange(random, guess);
 		}
+		else {
+			range = 'Enter a number between 1 and 100.';
+		}
 		return range;
 	}
 
@@ -40,7 +43,7 @@ $(document).ready(function(){
 		// check if guess supplied a numeric input between 1 and 100.
 		guess = parseInt(guess);
 
-		if (!isNaN(guess)) {
+		if (!isNaN(guess) && guess >= 1 && guess <= 100) {
 			return true;
 		}
 		else {
